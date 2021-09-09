@@ -14,13 +14,13 @@
 [UNP 书上源码](./unpv13e)  
 [UNP README](./unpv13e/README)
 
-准备工作，先把 libunp.a(在libfree make生成) 放到 /usr/local/lib 中，然后把 unp.h(unpv13e/lib目录) 和 config.h(unpv13e目录) 放到/usr/local/include中，改一下unp.h让#include "config.h" 而不是 "../config.h"。  
-做好这些工作之后，可以直接代码中引用unp.h，并-lunp连接静态库了，另外在linux上可能要去掉对 sys/sysctl.h 的引用，因为这个已经被弃用。  
-最后为什么放在/usr/local下呢，因为这个是一般第三方非正式放的目录，这个比较合适。
+准备工作，先把 libunp.a(在libfree make生成) 放到 /usr/local/lib 中，然后把 unp.h(unpv13e/lib目录) 和 config.h(unpv13e目录) 放到 /usr/local/include 中，改一下 unp.h 让 #include "config.h" 而不是 "../config.h"。  
+做好这些工作之后，可以直接代码中引用 unp.h，并 -lunp 连接静态库了，另外在linux上可能要去掉对 sys/sysctl.h 的引用，因为这个已经被弃用。  
+最后为什么放在 /usr/local 下呢，因为这个是用户级第三方非正式的东西放的目录，比较合适。
 
 ### Note CH0
 
-如果运行 ./daytimetcpcli 127.0.0.1 显示refused，这是因为inetd默认没开daytime服务，你修改 /etc/inetd.conf, 然后 service inetd restart 重启服务即可，另外linux ubuntu 可能没安inetd，需要 apt install 一下。
+如果运行 ./daytimetcpcli 127.0.0.1 显示 refused，这是因为 inetd 默认没开 daytime 服务，你修改 /etc/inetd.conf, 然后 service inetd restart 重启服务即可，另外linux ubuntu 可能没安 inetd，需要 apt install 一下。
 
 ---
 
