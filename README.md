@@ -9,12 +9,12 @@
 - [CH2 传输层：TCP、UDP、SCTP](#CH2-传输层TCPUDPSCTP)
 - [CH3 套接字编程简介](#CH3-套接字编程简介)
 - [CH4 基本TCP套接字编程](#CH4-基本TCP套接字编程)
-- [CH5 TCP客户/服务器程序示例](#CH5-TCP客户/服务器程序示例)
-- [CH6 I/O复用：select和poll函数](#CH6-I/O复用select和poll函数)
+- [CH5 TCP客户/服务器程序示例](#CH5-tcp客户服务器程序示例)
+- [CH6 I/O复用：select和poll函数](#CH6-IO复用select和poll函数)
 - [CH7 套接字选项](#CH7-套接字选项)
 - [CH8 基本UDP套接字编程](#CH8-基本UDP套接字编程)
 - [CH9 基本SCTP套接字编程](#CH9-基本SCTP套接字编程)
-- [CH10 SCTP客户/服务器程序例子](#CH10-SCTP客户/服务器程序例子)
+- [CH10 SCTP客户/服务器程序例子](#CH10-SCTP客户服务器程序例子)
 - [CH11 名字与地址转换](#CH11-名字与地址转换)
 
 ### CH0 预备工作
