@@ -88,9 +88,11 @@ void \*的指针值计算没有意义,C不允许因此void \*指针加减运算(
 
 ### 4.4
 
-输出 accept error: Invalid argument，这是因为accept的socket参数不是监听套接字而只是一个主动套接字，导致EINVAL错误
+[代码](./exercise/ch4/4/daytimetcp_sv.c) 输出 accept error: Invalid argument，这是因为accept的socket参数不是监听套接字而只是一个主动套接字，导致EINVAL错误
 
 ### 4.5
+
+[代码](./exercise/ch4/5/daytimetcp_sv.c) 发现socket生成的一个主动套接字一开始没有分配ip和端口，connect或者listen在发现这种情况(没有bind显式绑定)，内核就会自动分配一个ip和临时端口(linux下listen分配的ip是通配ip，connect是根据路由分配一个ip)
 
 ---
 
