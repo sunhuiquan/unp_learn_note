@@ -88,6 +88,8 @@ void \*的指针值计算没有意义,C不允许因此void \*指针加减运算(
 
 ### 4.4
 
+输出 accept error: Invalid argument，这是因为accept的socket参数不是监听套接字而只是一个主动套接字，导致EINVAL错误
+
 ### 4.5
 
 ---

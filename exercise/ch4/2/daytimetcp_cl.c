@@ -24,9 +24,9 @@ int main(int argc, char **argv)
 	// connect 建立连接之前，内核还没给这个socket隐式绑定一个ip和port
 	// len = sizeof(addr);
 	// if (getsockname(sockfd, (struct sockaddr *)&addr, &len) == -1)
-	// 	err_ret("getsockname");
+	// 	err_sys("getsockname");
 	// if ((pinet_str = sock_ntop((struct sockaddr *)&addr, len)) == NULL)
-	// 	err_ret("sock_ntop");
+	// 	err_sys("sock_ntop");
 	// printf("%s\n", pinet_str);
 
 	if (connect(sockfd, (SA *)&servaddr, sizeof(servaddr)) < 0)
@@ -35,9 +35,9 @@ int main(int argc, char **argv)
 	// connect 建立连接之后，内核会给这个socket隐式绑定一个ip和port
 	len = sizeof(addr);
 	if (getsockname(sockfd, (struct sockaddr *)&addr, &len) == -1)
-		err_ret("getsockname");
+		err_sys("getsockname");
 	if ((pinet_str = sock_ntop((struct sockaddr *)&addr, len)) == NULL)
-		err_ret("sock_ntop");
+		err_sys("sock_ntop");
 	printf("%s\n", pinet_str);
 
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0)
