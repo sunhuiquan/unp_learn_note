@@ -11,8 +11,22 @@ int main(int argc, char **argv)
 	ssize_t n;
 	char buf[MAXLINE];
 	socklen_t clilen;
-	struct pollfd client[OPEN_MAX];
 	struct sockaddr_in cliaddr, servaddr;
+	int open_size;
+
+	// If name corresponds to a maximum or minimum limit,
+	// and that limit is indeterminate, -1 is returned and errno is not changed.
+	// (To distinguish an indeterminate limit from an error, set errno to zero before
+	// the call, and then check whether errno is non‐zero when - 1 is returned.)
+	errno = 0;
+	if ((open_size = sysconf(_SC_OPEN_MAX)) == -1)
+	{
+		if (errno != 0)
+			err_quit("sysconf"); // error
+		else
+			open_size = OPEN_MAX; // inderminate
+	}
+	struct pollfd client[open_size];
 
 	listenfd = Socket(AF_INET, SOCK_STREAM, 0);
 
