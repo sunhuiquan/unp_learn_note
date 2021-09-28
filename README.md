@@ -19,7 +19,7 @@
 
 ### CH0 预备工作
 
-[UNP repo](https://github.com/unpbook/unpv13e)  
+[unpv13e repo](https://github.com/unpbook/unpv13e)  
 [UNP 书上源码](./unpv13e)  
 [UNP README](./unpv13e/README)
 
@@ -180,6 +180,8 @@ IP 路由功能，根据目的 IP 地址，查路由表确定外出接口和下�
 ### 6.7
 
 ### 6.8
+
+[代码实现](./exercise/ch6/8/sv.c)
 
 ---
 
