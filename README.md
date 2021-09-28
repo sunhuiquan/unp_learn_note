@@ -180,11 +180,22 @@ RLIMIT_NOFILE 是最大的打开文件描述数。
 首先配置下/etc/inetd.conf 配置文件(对于 stream 就用 nowait，对于内置程序就 internal，其他照抄)，然后重启 inetd 服务，注意我的 ubuntu 需要安装 inetd，且使用的名字是 openbsd-inetd，直接用 inetd service 是不认识的(可以 service --status-all 查看运行的服务的状态)。  
 然后 telnet 查看下是不是开了这项服务,telnet 127.0.0.1 19 然后是结果——自动生成一大堆的字符，说明没问题了，剩下的就是简单的做题了。  
 [代码实现](./exercise/ch6/5/cl.c)  
-首先没有 shutdown 直接 pause(),正常发来数据，直到缓冲区满发送阻塞  
-![IMG](./IMG/6_5a.png)
+然后抓包进行解析，注意本机环回地址不会经过以太网卡，所以如果要监测 localhost 需要-i lo。
 
+```bash
+sudo tcpdump -i lo 'tcp and port 19' > a// 抓包，并把数据写入文件,并等待一些时间
+//可以使用script之类的程序，这样还可以在终端中看见
+more a | grep 'localhost.chargen >'
+// grep看的清楚点，因为客户端不向服务器发报文，只是单纯的ack确认
+```
+
+首先没有 shutdown 直接 pause(),正常发来数据，直到缓冲区满发送阻塞  
+开始是正常发送  
+![IMG](./IMG/6_5a.png)  
+然后就是缓冲区满了，不再发了  
+![IMG](./IMG/6_5b.png)  
 然后 shutdown SHUT_RD,发现发来的数据全部扔掉，这样也同样导致会服务器不断地发数据。  
-![IMG](./IMG/6_5b.png)
+![IMG](./IMG/6_5c.png)
 
 ### 6.6
 
