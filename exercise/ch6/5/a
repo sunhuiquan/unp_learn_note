@@ -1,0 +1,51 @@
+18:50:24.178206 IP localhost.45290 > localhost.chargen: Flags [S], seq 597179483, win 65495, options [mss 65495,sackOK,TS val 2115136711 ecr 0,nop,wscale 7], length 0
+18:50:24.178233 IP localhost.chargen > localhost.45290: Flags [S.], seq 2994949231, ack 597179484, win 65483, options [mss 65495,sackOK,TS val 2115136711 ecr 2115136711,nop,wscale 7], length 0
+18:50:24.178265 IP localhost.45290 > localhost.chargen: Flags [.], ack 1, win 512, options [nop,nop,TS val 2115136711 ecr 2115136711], length 0
+18:50:24.178856 IP localhost.chargen > localhost.45290: Flags [P.], seq 1:75, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136711], length 74
+18:50:24.178874 IP localhost.45290 > localhost.chargen: Flags [.], ack 75, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.178892 IP localhost.chargen > localhost.45290: Flags [P.], seq 75:149, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.178900 IP localhost.45290 > localhost.chargen: Flags [.], ack 149, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.178910 IP localhost.chargen > localhost.45290: Flags [P.], seq 149:223, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.178917 IP localhost.45290 > localhost.chargen: Flags [.], ack 223, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.178926 IP localhost.chargen > localhost.45290: Flags [P.], seq 223:297, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.178933 IP localhost.45290 > localhost.chargen: Flags [.], ack 297, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.178945 IP localhost.chargen > localhost.45290: Flags [P.], seq 297:371, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.178953 IP localhost.45290 > localhost.chargen: Flags [.], ack 371, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.178979 IP localhost.chargen > localhost.45290: Flags [P.], seq 371:445, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.178990 IP localhost.45290 > localhost.chargen: Flags [.], ack 445, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179004 IP localhost.chargen > localhost.45290: Flags [P.], seq 445:519, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179011 IP localhost.45290 > localhost.chargen: Flags [.], ack 519, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179020 IP localhost.chargen > localhost.45290: Flags [P.], seq 519:593, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179026 IP localhost.45290 > localhost.chargen: Flags [.], ack 593, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179035 IP localhost.chargen > localhost.45290: Flags [P.], seq 593:667, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179041 IP localhost.45290 > localhost.chargen: Flags [.], ack 667, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179095 IP localhost.chargen > localhost.45290: Flags [P.], seq 667:741, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179113 IP localhost.45290 > localhost.chargen: Flags [.], ack 741, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179135 IP localhost.chargen > localhost.45290: Flags [P.], seq 741:815, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179144 IP localhost.45290 > localhost.chargen: Flags [.], ack 815, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179160 IP localhost.chargen > localhost.45290: Flags [P.], seq 815:889, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179170 IP localhost.45290 > localhost.chargen: Flags [.], ack 889, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179185 IP localhost.chargen > localhost.45290: Flags [P.], seq 889:963, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179194 IP localhost.45290 > localhost.chargen: Flags [.], ack 963, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179207 IP localhost.chargen > localhost.45290: Flags [P.], seq 963:1037, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179216 IP localhost.45290 > localhost.chargen: Flags [.], ack 1037, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179229 IP localhost.chargen > localhost.45290: Flags [P.], seq 1037:1111, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179239 IP localhost.45290 > localhost.chargen: Flags [.], ack 1111, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179253 IP localhost.chargen > localhost.45290: Flags [P.], seq 1111:1185, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.179262 IP localhost.45290 > localhost.chargen: Flags [.], ack 1185, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 0
+18:50:24.179276 IP localhost.chargen > localhost.45290: Flags [P.], seq 1185:1259, ack 1, win 512, options [nop,nop,TS val 2115136712 ecr 2115136712], length 74
+18:50:24.180220 IP localhost.chargen > localhost.45290: Flags [.], seq 1259:34027, ack 1, win 512, options [nop,nop,TS val 2115136713 ecr 2115136712], length 32768
+18:50:24.210714 IP localhost.chargen > localhost.45290: Flags [.], seq 1259:34027, ack 1, win 512, options [nop,nop,TS val 2115136743 ecr 2115136712], length 32768
+18:50:24.210732 IP localhost.45290 > localhost.chargen: Flags [.], ack 34027, win 370, options [nop,nop,TS val 2115136744 ecr 2115136712,nop,nop,sack 1 {1259:34027}], length 0
+18:50:24.210758 IP localhost.chargen > localhost.45290: Flags [.], seq 34027:66795, ack 1, win 512, options [nop,nop,TS val 2115136744 ecr 2115136744], length 32768
+18:50:24.260623 IP localhost.45290 > localhost.chargen: Flags [.], ack 66795, win 114, options [nop,nop,TS val 2115136794 ecr 2115136744], length 0
+18:50:24.480476 IP localhost.chargen > localhost.45290: Flags [P.], seq 66795:81387, ack 1, win 512, options [nop,nop,TS val 2115137013 ecr 2115136794], length 14592
+18:50:24.480491 IP localhost.45290 > localhost.chargen: Flags [.], ack 81387, win 0, options [nop,nop,TS val 2115137013 ecr 2115137013], length 0
+18:50:24.700739 IP localhost.chargen > localhost.45290: Flags [.], ack 1, win 512, options [nop,nop,TS val 2115137234 ecr 2115137013], length 0
+18:50:24.700752 IP localhost.45290 > localhost.chargen: Flags [.], ack 81387, win 0, options [nop,nop,TS val 2115137234 ecr 2115137013], length 0
+18:50:25.130629 IP localhost.chargen > localhost.45290: Flags [.], ack 1, win 512, options [nop,nop,TS val 2115137664 ecr 2115137234], length 0
+18:50:25.990679 IP localhost.chargen > localhost.45290: Flags [.], ack 1, win 512, options [nop,nop,TS val 2115138524 ecr 2115137234], length 0
+18:50:25.990692 IP localhost.45290 > localhost.chargen: Flags [.], ack 81387, win 0, options [nop,nop,TS val 2115138524 ecr 2115137013], length 0
+18:50:27.750529 IP localhost.chargen > localhost.45290: Flags [.], ack 1, win 512, options [nop,nop,TS val 2115140283 ecr 2115138524], length 0
+18:50:27.750543 IP localhost.45290 > localhost.chargen: Flags [.], ack 81387, win 0, options [nop,nop,TS val 2115140284 ecr 2115137013], length 0
+

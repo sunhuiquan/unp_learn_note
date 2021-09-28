@@ -17,6 +17,13 @@ int main(int argc, char **argv)
 
 	Connect(sockfd, (SA *)&servaddr, sizeof(servaddr));
 
+	// 第二次测试使用SHUTDOWN(SHUT_RD)
+	shutdown(sockfd, SHUT_RD);
+	printf("shutdown\n");
+
+	char ch;
+	printf("%ld\n", read(sockfd, &ch, 1));
+
 	pause();
 
 	exit(0);

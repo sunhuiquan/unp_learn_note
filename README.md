@@ -194,8 +194,7 @@ more a | grep 'localhost.chargen >'
 ![IMG](./IMG/6_5a.png)  
 然后就是缓冲区满了，不再发了  
 ![IMG](./IMG/6_5b.png)  
-然后 shutdown SHUT_RD,发现发来的数据全部扔掉，这样也同样导致会服务器不断地发数据。  
-![IMG](./IMG/6_5c.png)
+然后添加代码 shutdown(SHUT_RD);发现结果和上面一样，说明 linux 的实现不会扔掉缓冲区中收到的数据(其他实现可能会扔掉)，但之后的所有的 read 会得知 EOF(返回 0)，注意不是返回-1 错误。
 
 ### 6.6
 
