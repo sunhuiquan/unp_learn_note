@@ -179,7 +179,12 @@ RLIMIT_NOFILE 是最大的打开文件描述数。
 
 首先配置下/etc/inetd.conf 配置文件(对于 stream 就用 nowait，对于内置程序就 internal，其他照抄)，然后重启 inetd 服务，注意我的 ubuntu 需要安装 inetd，且使用的名字是 openbsd-inetd，直接用 inetd service 是不认识的(可以 service --status-all 查看运行的服务的状态)。  
 然后 telnet 查看下是不是开了这项服务,telnet 127.0.0.1 19 然后是结果——自动生成一大堆的字符，说明没问题了，剩下的就是简单的做题了。  
-[代码实现](./exercise/ch6/5/cl.c)
+[代码实现](./exercise/ch6/5/cl.c)  
+首先没有 shutdown 直接 pause(),正常发来数据，直到缓冲区满发送阻塞  
+![IMG](./IMG/6_5a.png)
+
+然后 shutdown SHUT_RD,发现发来的数据全部扔掉，这样也同样导致会服务器不断地发数据。  
+![IMG](./IMG/6_5b.png)
 
 ### 6.6
 
