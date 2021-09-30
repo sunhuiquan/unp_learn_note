@@ -148,6 +148,8 @@ Telnet 把输入行后面以 \r\n 结束，而我们的程序以 \n 结束。
 
 ### 5.5
 
+响应 RST(Reset the connection,连接已重置)，因为之前的已处于 EATABLISHED 状态的连接以及没了，新重启的服务器进程就只有个监听 socket，连接重置了，返回 RST。
+
 ### 5.6
 
 [代码](./exercise/ch5/6/cl.c) 注意发现服务器主动关闭后发来一个 FIN，然后客户端休眠后再发请求，就会因为连接已重置(断开)导致收到 RST 响应，之后再写一个已收到 RST 的 socket，在本地(根本不会发报文)，就会发现，然后内核发来一个 SIGPIPE 信号，如果忽略、捕获，那么回到 write 后 errno 设置 EPIPE。  
