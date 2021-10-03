@@ -301,10 +301,10 @@ TCP 基于字节流，所以是缓冲区大小容纳的下的情况下，能从 
    ![IMG](./IMG/sv2.png)  
    ![IMG](./IMG/con2.png)
 
-3. 最后看一下 connect 的作用，注意 UDP 的 connect 调用是纯本地行为，对端一点也不受影响，这里我们 server connect 一下，来测试这样会只接受那些源地址是服务器 connect 所标记的源地址的报文，注意这个和 bind 相反，这个是匹配报文源地址是不是一致,不过这个还要匹配 port 所以没多大的实际意义。
-   ![IMG](./IMG/cl3.png) 客户端修改源地址(通过 bind)  
-   ![IMG](./IMG/sv3.png)  
-   ![IMG](./IMG/con3.png)
+<!-- 3. 最后看一下 connect 的作用，注意 UDP 的 connect 调用是纯本地行为，对端一点也不受影响，这里我们 server connect 一下，来测试这样会只接受那些源地址是服务器 connect 所标记的源地址的报文，注意这个和 bind 相反，这个是匹配报文源地址是不是一致,不过这个还要匹配 port 所以没多大的实际意义。
+   ![IMG](./IMG/cl3.png) 客户端修改源地址(通过 bind)
+   ![IMG](./IMG/sv3.png)
+   ![IMG](./IMG/con3.png) -->
 
 ### 8.7
 
