@@ -16,7 +16,7 @@ int main()
 	bzero(&addr, sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(9999);
-	if (inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr) == -1)
+	if (inet_pton(AF_INET, "0.0.0.0", &addr.sin_addr) == -1)
 		err_sys("inet_pton");
 
 	if (bind(sfd, (struct sockaddr *)&addr, sizeof(addr)) == -1)
