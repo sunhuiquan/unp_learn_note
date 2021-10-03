@@ -18,6 +18,14 @@ int main()
 	if (bind(sfd, (struct sockaddr *)&addr, sizeof(addr)) == -1)
 		err_sys("bind");
 
+	// for (;;)
+	// {
+	// 	if ((readn = recvfrom(sfd, data, MAXLINE, 0, NULL, NULL)) < 0)
+	// 		err_sys("read");
+	// 	if (write(STDOUT_FILENO, data, readn) != readn)
+	// 		err_sys("write");
+	// }
+
 	bzero(&conn_addr, sizeof(conn_addr));
 	conn_addr.sin_family = AF_INET;
 	conn_addr.sin_port = htons(40000);
@@ -26,10 +34,13 @@ int main()
 	if (connect(sfd, (struct sockaddr *)&conn_addr, sizeof(conn_addr)) == -1)
 		err_sys("connect");
 
-	if ((readn = read(sfd, data, MAXLINE)) < 0)
-		err_sys("read");
-	if (write(STDOUT_FILENO, data, readn) != readn)
-		err_sys("write");
+	for (;;)
+	{
+		if ((readn = read(sfd, data, MAXLINE)) < 0)
+			err_sys("read");
+		if (write(STDOUT_FILENO, data, readn) != readn)
+			err_sys("write");
+	}
 
 	return 0;
 }
