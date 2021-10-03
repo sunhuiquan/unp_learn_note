@@ -12,7 +12,7 @@ int main()
 
 	bzero(&addr, sizeof(addr));
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(9999);
+	addr.sin_port = htons(10000);
 	if (inet_pton(AF_INET, "0.0.0.0", &addr.sin_addr) == -1)
 		err_sys("inet_pton");
 	if (bind(sfd, (struct sockaddr *)&addr, sizeof(addr)) == -1)
@@ -20,32 +20,16 @@ int main()
 
 	bzero(&conn_addr, sizeof(conn_addr));
 	conn_addr.sin_family = AF_INET;
-	conn_addr.sin_port = htons(50001);
+	conn_addr.sin_port = htons(40000);
 	if (inet_pton(AF_INET, "172.28.33.22", &conn_addr.sin_addr) == -1)
 		err_sys("inet_pton");
 	if (connect(sfd, (struct sockaddr *)&conn_addr, sizeof(conn_addr)) == -1)
 		err_sys("connect");
 
-	if (write(sfd, "a", 1) != 1)
-		err_sys("write");
-
 	if ((readn = read(sfd, data, MAXLINE)) < 0)
 		err_sys("read");
-
 	if (write(STDOUT_FILENO, data, readn) != readn)
 		err_sys("write");
-
-	if ((readn = read(sfd, data, MAXLINE)) < 0)
-		err_sys("read");
-
-	if (write(STDOUT_FILENO, data, readn) != readn)
-		err_sys("write");
-
-	// if ((readn = read(sfd, data, MAXLINE)) < 0)
-	// 	err_sys("read");
-
-	// if (write(STDOUT_FILENO, data, readn) != readn)
-	// 	err_sys("write");
 
 	return 0;
 }
