@@ -5,6 +5,7 @@ int main()
 	int sfd, readn;
 	struct sockaddr_in addr;
 	struct sockaddr_in from_addr;
+	struct sockaddr_in conn_addr;
 	socklen_t len;
 	char data[MAXLINE];
 	char buf[MAXLINE];
@@ -19,6 +20,14 @@ int main()
 		err_sys("inet_pton");
 	if (bind(sfd, (struct sockaddr *)&addr, sizeof(addr)) == -1)
 		err_sys("bind");
+
+	bzero(&conn_addr, sizeof(conn_addr));
+	conn_addr.sin_family = AF_INET;
+	conn_addr.sin_port = htons(50000);
+	if (inet_pton(AF_INET, "127.0.0.1", &conn_addr.sin_addr) == -1)
+		err_sys("inet_pton");
+	if (connect(sfd, (struct sockaddr *)&conn_addr, sizeof(conn_addr)) == -1)
+		err_sys("connect");
 
 	len = sizeof(from_addr);
 	if ((readn = recvfrom(sfd, data, MAXLINE, 0, (struct sockaddr *)&from_addr, &len)) < 0)
