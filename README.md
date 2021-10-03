@@ -292,8 +292,19 @@ TCP 基于字节流，所以是缓冲区大小容纳的下的情况下，能从 
 需要注意的是，linux 是弱端系统实现，所以说 bind 只是让源地址设置成我们绑定的 IP，实际上走的接口可以不是，接口无所谓只要能到就行。
 
 1. 首先看一下客户端 bind 的作用，可以改变绑定的源地址。
+   ![IMG](./IMG/cl1.png) 客户端修改源地址  
+   ![IMG](./IMG/sv1.png)  
+   ![IMG](./IMG/con1.png)
 
-3）注意 UDP 的 connect 调用是纯本地行为，对端一点也不受影响，这里我们 server connect 一下，来测试是否不接受非匹配源地址的报文。
+2. 然后看一下服务器 bind 的作用，注意这个 bind 的作用是只接受服务器 bind 绑定的那个端口上来的报文，这个服务器上的网络接口对应的是客户端发的报文的的目的 ip 地址。
+   ![IMG](./IMG/cl2.png) 客户端修改目的地址(sendto 的参数)  
+   ![IMG](./IMG/sv2.png)  
+   ![IMG](./IMG/con2.png)
+
+3. 最后看一下 connect 的作用，注意 UDP 的 connect 调用是纯本地行为，对端一点也不受影响，这里我们 server connect 一下，来测试这样会只接受那些源地址是服务器 connect 所标记的源地址的报文，注意这个和 bind 相反，这个是匹配报文源地址是不是一致。
+   ![IMG](./IMG/cl3.png)  
+   ![IMG](./IMG/sv3.png)  
+   ![IMG](./IMG/con3.png)
 
 ### 8.7
 
