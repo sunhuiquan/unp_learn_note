@@ -9,6 +9,7 @@ int main(int argc, char **argv)
 	struct hostent *hptr;
 	char addrs[MAXLINE][MAXLIST];
 	int i, af;
+	socklen_t len;
 
 	while (--argc > 0)
 	{
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
 		printf("official hostname: %s\n", hptr->h_name);
 
 		af = hptr->h_addrtype;
+		len = hptr->h_length; // 是地址长度，其实网络序IPv4二进制地址长度都是4
 		for (pptr = hptr->h_aliases; *pptr != NULL; pptr++)
 			printf("\talias: %s\n", *pptr);
 
@@ -38,7 +40,7 @@ int main(int argc, char **argv)
 					err_sys("inet_ntop");
 				printf("\taddress: %s\n", str);
 
-				if ((hptr = gethostbyaddr(addrs[j], sizeof(addrs[j]), AF_INET)) == NULL)
+				if ((hptr = gethostbyaddr(addrs[j], len, AF_INET)) == NULL)
 				{
 					err_msg("gethostbyaddr error for addr: %s: %s",
 							str, hstrerror(h_errno));
