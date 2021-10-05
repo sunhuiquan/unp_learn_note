@@ -14,23 +14,16 @@ int main(int argc, char **argv)
 	if (argc != 3)
 		err_quit("usage: daytimetcpcli1 <hostname> <service>");
 
-	if ((hp = gethostbyname(argv[1])) == NULL)
+	if (inet_pton(AF_INET, argv[1], &inetaddr) == 1)
 	{
-		if (inet_aton(argv[1], &inetaddr) == 0)
-		{
-			err_quit("hostname error for %s: %s", argv[1], hstrerror(h_errno));
-		}
-		else
-		{
-			inetaddrp[0] = &inetaddr;
-			inetaddrp[1] = NULL;
-			pptr = inetaddrp;
-		}
+		inetaddrp[0] = &inetaddr;
+		inetaddrp[1] = NULL;
+		pptr = inetaddrp;
 	}
-	else
-	{
+	else if ((hp = gethostbyname(argv[1])) != NULL)
 		pptr = (struct in_addr **)hp->h_addr_list;
-	}
+	else
+		err_quit("can't get host");
 
 	if ((sp = getservbyname(argv[2], "tcp")) == NULL)
 		err_quit("getservbyname error for %s", argv[2]);
