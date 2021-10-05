@@ -346,7 +346,15 @@ IPv4 数据报的总长度字段 16 位最大是 65535，这个长度是包含�
 
 ### 11.4
 
+<!-- [代码实现](./exercise/ch11/4/cl.c) -->
+
 ### 11.5
+
+书中答案的问题：gethostbyname 不支持 IPv6，所以这里的支持是毫无作用的(当然代码本身没错，只是有没有根本无所谓)，因为实际上 gethostbyname 只可能返回 IPv4 的内容，根本用不到。
+
+[代码实现](./exercise/ch11/5/cl.c) 而且 gethostbyname 已被 POSIX 标准废弃，你应该使用 getaddrinfo 来处理 IPv4 和 IPv6。
+
+![IMG](./IMG/11_5.png)
 
 ### 11.6
 
