@@ -364,13 +364,17 @@ IPv4 数据报的总长度字段 16 位最大是 65535，这个长度是包含�
 
 通过一个大的通用地址结构(比如 sockaddr 或者 sockaddr_storage),然后调用 getsockname 获取本端的 socket 套接字结构即可，getsockname 的地址长度是值结果参数。
 
-分配一个足够大的缓冲区或者直接用 sockaddr_storage 这个新式通用套接字地址结构(这个的大小就是最大的套接字地址大小)，因为这里是要真的放进去，所以一定要足够大，不然会 overflow。千万不要用 sockaddr，因为实际上 sockaddr 只能放得下 IPv4 十六个字节，IPv6 的 28 字节和更大的套接字结构根本放不下。
+分配一个足够大的缓冲区或者直接用 sockaddr_storage 这个新式通用套接字地址结构(这个的大小就是最大的套接字地址大小)，因为这里是要真的放进去，所以一定要足够大，不然会 overflow。千万不要用 sockaddr，因为实际上 sockaddr 只能放得下 IPv4 十六个字节，IPv6 的 28 字节和更大的套接字结构根本放不下,另外要实际保存一个套接字结构的情况，比如 accept 和 recvfrom 之类的，如果有非 IPv4 的套接字类型，一定不能用 sockaddr，因为放不下。
 
 另外 sockaddr_in6 的大小明明比 sockaddr 结构大，那么各种 API 也会要求把指针类型转成 sockaddr*，这是因为各种套接字结构前面的 family 字段的位置都相同，sockaddr*可以正常获取这个字段，然后得知我们要处理的套接字的类型，然后把这个指针的类型再转回去就可以了。
 
 再注意一点，那就是 IPv4 和 IPv6 套接字类型是定长的，但其他的例如 UNIX 套接字就是变长的，所以传递的真实套接字大小是有用的，另外也许也有检查的作用，当发现真实套接字大小和对应的 family 应该的大小不同。
 
 ### 11.8
+
+[代码实现](./exercise/ch11/8/sv.c) NI_NUMERICHOST | NI_NUMERICSERV 即可,这样就避免了查 DNS 和/etc/services 文件，单纯把网络序的二进制转成主机序的十进制表达形式而已。
+
+另外 NI_MAXHOST，NI_MAXSERV 可以当最大的主机和端口名(或者数值字串)的长度。
 
 ### 11.9
 
