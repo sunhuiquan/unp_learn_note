@@ -59,5 +59,10 @@ int main(int argc, char **argv)
 		recvline[n] = 0; /* null terminate */
 		Fputs(recvline, stdout);
 	}
+
+	if ((hp = gethostbyaddr(&servaddr.sin_addr, sizeof(struct sockaddr_in), AF_INET)) == NULL)
+		err_sys("gethostbyaddr");
+	printf("name: %s\n", hp->h_name);
+
 	exit(0);
 }
