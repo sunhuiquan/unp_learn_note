@@ -281,20 +281,20 @@ MSS 建立连接前是默认值(一般是 536)，建立连接后,(准确来说�
 [代码实现](./exercise/ch7/3)
 
 1. 正常关闭
-![IMG](./IMG/7_3a.png)  
-这是正常的四次挥手过程，虽然是三个分组，但这是因为四次挥手过程中第二步ACK可以被第三步服务器发FIN捎带,因为我这里是服务器子进程收到EOF立即终止，如果读到EOF(对端close导致)后服务器子进程没有立即终止或close/shutdown(发FIN)，让ACK延滞的定时器超时就不会捎带这个ACK。  
-![IMG](./IMG/7_3b.png)  
-然后netstat看下主动关闭的客户端端口，发现这个端口处于TIME_WAIT状态。
+   ![IMG](./IMG/7_3a.png)  
+   这是正常的四次挥手过程，虽然是三个分组，但这是因为四次挥手过程中第二步 ACK 可以被第三步服务器发 FIN 捎带,因为我这里是服务器子进程收到 EOF 立即终止，如果读到 EOF(对端 close 导致)后服务器子进程没有立即终止或 close/shutdown(发 FIN)，让 ACK 延滞的定时器超时就不会捎带这个 ACK。  
+   ![IMG](./IMG/7_3b.png)  
+   然后 netstat 看下主动关闭的客户端端口，发现这个端口处于 TIME_WAIT 状态。
 
-2. 使用SO_LINGER(强烈不能这样用，只是实验)
-![IMG](./IMG/7_3c.png)  
-可以看见不再经过四次挥手，客户端进程直接发送RST到那个服务器的子进程。  
-![IMG](./IMG/7_3d.png)  
-同样的，当这个socket不经过四次挥手正常关闭，自然而然没有TIME_WAIT状态了，而是直接变成CLOSED状态。
+2. 使用 SO_LINGER(强烈不能这样用，只是实验)
+   ![IMG](./IMG/7_3c.png)  
+   可以看见不再经过四次挥手，客户端进程直接发送 RST 到那个服务器的子进程。  
+   ![IMG](./IMG/7_3d.png)  
+   同样的，当这个 socket 不经过四次挥手正常关闭，自然而然没有 TIME_WAIT 状态了，而是直接变成 CLOSED 状态。
 
 ### 7.4
 
-第一个处于bind的时候，另一个会出错EADDRINUSE，但bind后connect，那么就可以了。所以可以重复bind忽略EADDRINUSE错误直到成功。  
+第一个处于 bind 的时候，另一个会出错 EADDRINUSE，但 bind 后 connect，那么就可以了。所以可以重复 bind 忽略 EADDRINUSE 错误直到成功。  
 不过这个没什么实际意义，看了答案才知道，不要在意。
 
 ### 7.5
@@ -307,25 +307,29 @@ MSS 建立连接前是默认值(一般是 536)，建立连接后,(准确来说�
 
 ### 7.7
 
-书上答案说不起任何作用，因为SO_DEBUG只对TCP起作用，而ping用的是ICMP。
+书上答案说不起任何作用，因为 SO_DEBUG 只对 TCP 起作用，而 ping 用的是 ICMP。
 
 ### 7.8
 
-![IMG](./IMG/7_8.png) 
+![IMG](./IMG/7_8.png)
 
 ### 7.9
 
-![IMG](./IMG/7_9.png) 
+![IMG](./IMG/7_9.png)
 
 ### 7.10
 
-![IMG](./IMG/7_10.png) 
+![IMG](./IMG/7_10.png)
 
 ### 7.11
 
->A TCP SHOULD implement a delayed ACK, but an ACK should not be excessively delayed; in particular, the delay MUST be less than 0.5 seconds, and in a stream of full-sized segments there SHOULD be an ACK for at least every second segment.
+> A TCP SHOULD implement a delayed ACK, but an ACK should not be excessively delayed; in particular, the delay MUST be less than 0.5 seconds, and in a stream of full-sized segments there SHOULD be an ACK for at least every second segment.
 
 ### 7.12
+
+首先注意区分主机崩溃关闭没有重启的情况，注意是指主机，这样网络上发的报文就无法到达，如果是这种情况，一种是不断尝试重连直到最后的ETIMEOUT错误，但更常见的是但如果中间收到比如ICMP的错误(unreachable)这样，就会直接返回对应的错误，不用等待超时了；而主机崩溃重启的意思是，服务器进程关闭了，没有再监听那个端口的，但客户发的请求能通过网络到达目的主机，因为重启了，但是服务器主机收到后找不到监听这个端口的，没有这个服务，所以服务器主机会自动发给客户RST报文。
+
+5-2最耗时的地方是accept阻塞，5-3最耗时的地方是read阻塞。服务器设置了SO_KEEPALIVE,意思是过了一段时间(默认是2h)两个方向上都没有数据交换，设置了SO_KEEPALIVE的这个服务器会向对端发送试探性报文。但是对面主机崩溃且不重启，如同上一段所说的第一种情况，那么要么是不断尝试最后ETIMEOUT错误，要么是中途收到了ICMP的unreachable错误直接返回响应错误。
 
 ### 7.13
 
