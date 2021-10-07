@@ -311,11 +311,19 @@ MSS 建立连接前是默认值(一般是 536)，建立连接后,(准确来说�
 
 ### 7.8
 
+![IMG](./IMG/7_8.png) 
+
 ### 7.9
+
+![IMG](./IMG/7_9.png) 
 
 ### 7.10
 
+![IMG](./IMG/7_10.png) 
+
 ### 7.11
+
+>A TCP SHOULD implement a delayed ACK, but an ACK should not be excessively delayed; in particular, the delay MUST be less than 0.5 seconds, and in a stream of full-sized segments there SHOULD be an ACK for at least every second segment.
 
 ### 7.12
 
