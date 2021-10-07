@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 {
 	int sockfd;
 	struct sockaddr_in servaddr;
+	struct linger linger;
 
 	if (argc != 2)
 		err_quit("usage: tcpcli <IPaddress>");
@@ -34,6 +35,11 @@ int main(int argc, char **argv)
 	Connect(sockfd, (SA *)&servaddr, sizeof(servaddr));
 
 	str_cli(stdin, sockfd); /* do it all */
+
+	linger.l_onoff = 1;
+	linger.l_linger = 0;
+	if (setsockopt(sockfd, SOL_SOCKET, SO_LINGER, &linger, sizeof(linger)) == -1)
+		err_sys("setsockopt");
 
 	exit(0);
 }
