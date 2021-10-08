@@ -404,7 +404,7 @@ IPv4 数据报的总长度字段 16 位最大是 65535，这个长度是包含�
 
 ### 8.9
 
-IP_RECVDSTADDR套接字选项导致所受到UDP数据报的目的IP地址由recvmsg作为辅助数据返回，UNP22.2节里面有一个例子。
+IP_RECVDSTADDR 套接字选项导致所收到 UDP 数据报的目的 IP 地址由 recvmsg 作为辅助数据返回，UNP22.2 节里面有一个例子。
 
 ---
 
@@ -458,7 +458,10 @@ IP_RECVDSTADDR套接字选项导致所受到UDP数据报的目的IP地址由recv
 
 ### 11.9
 
-还没看完 ch7 to do
+[代码实现](./exercise/ch11/9/sv.c) 首先别忘了每个要 bind 的 socket 都要设置 SO_REUSEADDR 选项，所以第二个的 setsockot 地点要在 bind 前，不然 bind 时第二个客户并没有指定这个选项导致出错。
+
+![IMG](./IMG/11_9.png)  
+(172.23.193.131 是我主机的另一个具体接口，用 nc 是因为-u 可以支持 udp，telnet 只能 tcp，另外我懒得写客户程序了)
 
 ### 11.10
 
